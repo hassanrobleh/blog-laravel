@@ -1,0 +1,165 @@
+Vue
+yield 
+<!-- declare un block qu'on va pouvoir surcharge depuis d'autres page -->
+
+Models 
+php artisan make:model Article -make
+php artisan migrate 
+
+Pour stocker en bdd un element, utiliser tinker et créer un nouvel objet et les champ et les sauvegarder mais c trop lent
+et on va utiliser le seeders qui va nous permettre de charger les données très facilement.
+ex: php artisan make:seed ArticleSeeder
+pour executer : php artisan db:seed --class=ArticleSeeder 
+
+
+php artisan make:model Dog ou
+php artisan make:model Dog -m (--migration) <=> php artisan make:migration create_dogs_table
+php artisan tinker => commande line
+$dog = new App\models\Dog();
+$dog->name = "test";
+$dog->age = 5;
+$dog->save()
+
+php artisan make:migration create_dogs_table
+php artisan migrate
+
+Suppression
+php artisan migrate:rollback
+php artisan migrate:reset
+
+Controllers
+php artisan make:controller MainController
+php artisan make:controller UniqueActionController --invokable
+php artisan make:controller ArticleController --resource
+
+Request
+
+dd(request)
+dd(request->all())
+dd(request->input(name de input))
+dd(request->path()
+
+php artisan make:request ArticleRequest
+
+Middleware
+->middleware(guest, auth.basic)
+php artisan make:middleware AuthMiddleware
+
+(
+
+//Route::resource('articles', ArticleController::class );
+
+/* Route::get('/test', function() {
+    return view('test');
+})->middleware('custom.auth'); */
+
+)
+
+1) Selon Laravel, où faut-il mettre sa logique de validation de données ?
+Dans une request personnallisée
+
+2)En quoi consiste l'affectation de masse (mass-assignment) ?
+Envoyer un tab au modele pour creer directement un nouvel enregistrement dans la base de données.
+
+3) Quel est le rôle de la directive @yield ?
+Déclare un nouveau bloc
+
+4) Quelle est la spécificité d'un Invokable Controller ?
+il est à action unique => Son action est à définir dans la fonction __invoke()
+
+Observer <=> slug (cycle de vie des entites)
+php artisan make:observer ArticleObserver
+
+laravel ne sait pas encore à quel model fait reference et pour cela, on va le préciser avec un flag
+
+pour venir change une chaine de caractere en slug, il va falloir qu'on utilise un service externe (une dependance cocur/slugify)
+
+apres avoir créer l instance, on peut essayer avec php artisan tinker pour simuler la création d'un article :
+(
+>>> $article = new App\Models\Article;
+=> App\Models\Article {#3332}
+>>> $article->title = "my title";
+=> "my title"
+>>> $article->subtitle = "my subtitle";
+=> "my subtitle"
+>>> $article->content = "my content";
+=> "my content"
+>>> $article->save();
+=> true
+>>>
+)
+
+2) Charger la fixure : php artisan db:seed --class=ArticleSeeder 
+
+Utilisation de helpers
+composer require laravel/helpers
+
+SECTION 6
+
+A) systeme dou implementation des authentifications
+B) install nvn package => composer require laravel/ui = c est package nous permettre de executer via artisan 
+php artisan ui vue --auth
+
+C) gestion de rôle
+modifier le migration create_users puis apres php artisan migrate:refresh
+
+pour gerer les roles user et admin
+user => on va mettre à jour leav controller et le model
+
+Admin => on va utiliser le seeder 
+php artisan make:seed Userseeder
+apres avoir implenter Userseeder
+php artisan db:seed --class=UserSeeder
+
+D) utilisation Middleware (roles)
+controller pour gérer les artcles
+php artisan make:controller ArticleController -r (-r pour avoir toutes les méthodes prédefini)
+
+php artisan make:middleware AdminMiddleware
+
+SECTION 7
+A) LISTER TOUS LES ARTICLES 
+B) Intégrer un editeur de texte
+C) La validation de données
+php artisan make:request ArticleRequest
+D) implementation des message flashs
+E) route binding et param converter
+F) Supprimer un article 
+G) Utilisation de modals
+H) Modifier un article
+I) Utilisation d'un manager
+Créer un dossier manager et on créer un fichier dans le dossier manager 
+J) Optimiser le systeme de routage
+php artisan route:list
+
+QCM:
+1) 
+Q: Qu'est que le Route Binding ?
+R: Injecter l'instance d'un modèle en se référant à la propriété passée en paramètre
+
+2) 
+Q : Comment faire une requête avec la méthode DELETE via un formulaire ?
+R : Un formulaire avec la méthode POST et la directive @method avec la valeur DELETE 
+
+3) 
+Q: Pourquoi les messages flash sont-ils utilisés ?
+R: Pour un stockage de données à longue durée.
+
+Section 8 : Relations entre modèles
+A) Les relations entre models 
+Laravel : Eloquent Relaionsships
+
+B) Model et migration
+php artisan make:model Category -m (-m = migration associée)
+unsignedBigInteger() = un id qui sera jamais negatif
+
+- php artisan migrate:reset => pour annuler toutes les tables
+- php artisan migrate
+- pour charger la bdd, on va utiliser seeder => 
+
+C) Gestion de la relation 
+
+D) Utilisation de factorie
+
+F) implementation côte admin 
+

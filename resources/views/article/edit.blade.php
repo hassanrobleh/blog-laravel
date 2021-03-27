@@ -28,7 +28,17 @@
             </div>
             <div class="col-12">
                 <div class="form-group">
-                    <label for="content">Sous titre</label>
+                    <label for="category">Catégorie</label>
+                    <select name="category" id="category" class="form-control">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" {{ $category->id === $article->category_id ? 'selected' : '' }}>{{ $category->label }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="content">Contenu</label>
                     <textarea id="tinymce-editeur" name="content" class="form-control w-100 @error('content') is-invalid @enderror">{{ $article->content }}</textarea>
                     @error('content')
                         <span class="text-danger" role="alert"><strong>{{ $message }}</strong></span>

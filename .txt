@@ -155,7 +155,8 @@ unsignedBigInteger() = un id qui sera jamais negatif
 
 - php artisan migrate:reset => pour annuler toutes les tables
 - php artisan migrate
-- pour charger la bdd, on va utiliser seeder => 
+- pour charger la bdd, on va utiliser seeder => php artisan make:seed CateogrySeeder
+une fois remplie la classe CategorySeeder, on va le recharge la bdd => php artisan db:seed --class=CategorySeeder
 
 C) Gestion de la relation 
 

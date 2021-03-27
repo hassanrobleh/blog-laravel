@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+
+    protected $faillable = [
+        'label'
+    ];
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 }

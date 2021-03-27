@@ -14,12 +14,12 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['Sport', 'IT', 'Sciences', 'Physic'];
-
+        /* $categories = ['Sport', 'IT', 'Sciences', 'Physic'];
         for ($i=0; $i < count($categories); $i++) { 
             Category::create([
                 'label' => $categories[$i]
             ]);
-        }
+        } */
+        \App\Models\Category::factory(5)->create();
     }
 }

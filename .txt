@@ -161,6 +161,11 @@ une fois remplie la classe CategorySeeder, on va le recharge la bdd => php artis
 C) Gestion de la relation 
 
 D) Utilisation de factorie
+factoriser les classes seeders (article et category)
+- php artisan make:factory ArticleFactory
+- php artisan make:factory CategoryFactory
+
+implenter le code et puis on va rafraichir la migration
 
 F) implementation côte admin 
 

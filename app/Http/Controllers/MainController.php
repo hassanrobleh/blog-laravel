@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -17,7 +18,8 @@ class MainController extends Controller
         $articles = Article::paginate(4);
         //dd($articles);
         return view('articles', [
-            'articles' => $articles
+            'articles' => $articles,
+            'categories' => Category::all()
         ]);
     }
 

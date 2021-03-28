@@ -182,5 +182,20 @@ pour créer: php artisan make:test ModelTest
 D) utiliser SQLite
 pour créer: php artisan make:test DatabaseTest
 
+Section 10 : Laravel Livewire
+A) Présentation de livewire 
+livewire nous permet de construire des interface moderne reactive et dynamique plutot utilsant du moteur de template blade.
+l'idée, ca va être fonctionner sous forme de composant
+
+
+B) Implémenter un counter
+C) Modifier une table existante
+php artisan make:migration update_categories_table
+php artisan migrate
+
+D) Filtrer avec livewire 
+php artisan make:livewire filters
+
+
 
 

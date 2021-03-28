@@ -169,3 +169,18 @@ implenter le code et puis on va rafraichir la migration
 
 F) implementation côte admin 
 
+Section 9 : Tests Unitaires
+A) Utilité des tests
+pour executer: php artisan test 
+
+B) Tester nos routes
+php artisan make:test RouteTest
+pour créer: php artisan test --filter=RouteTest
+
+C) Tester nos modèles
+pour créer: php artisan make:test ModelTest
+D) utiliser SQLite
+pour créer: php artisan make:test DatabaseTest
+
+
+

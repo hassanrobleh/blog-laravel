@@ -12,8 +12,9 @@
    </div>
 </div>
 <div class="container">
-    <p class="text-center">
-        {!! $article->content !!}
+    <p class="text-center row justify-content-center ">
+        <img src="{{ Voyager::image( $article->image ) }}" class="w-25 my-5" alt="">
+        {{ Markdown::parse($article->content) }}
     </p>
 </div>
 @endsection

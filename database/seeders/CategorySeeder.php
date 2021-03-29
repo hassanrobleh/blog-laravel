@@ -20,6 +20,8 @@ class CategorySeeder extends Seeder
                 'label' => $categories[$i]
             ]);
         } */
-        \App\Models\Category::factory(5)->create();
+        \App\Models\Category::factory(5)->create([
+            'icon' => 'address-book'
+        ]);
     }
 }

@@ -196,6 +196,16 @@ php artisan migrate
 D) Filtrer avec livewire 
 php artisan make:livewire filters
 
+Section 11 : Implémentation de voyager
+A) Présentation de voyage
+ideal s'est mettre une couche le systeme admin 
+le systeme admin de données 
+B) Installation de package 
+suivi le docs, 
+C) BREAD and CRUD
+D) Gestionnaire d'images
+E) Editeur de mackdown 
+
 
 
 

@@ -10,7 +10,7 @@ class Category extends Model
     use HasFactory;
 
     protected $faillable = [
-        'label'
+        'label', 'icon'
     ];
 
     public function articles()

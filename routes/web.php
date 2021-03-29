@@ -24,7 +24,7 @@ Route::get('/articles/{article:slug}', [ MainController::class, 'show'])->name('
 
 Auth::routes();
 
-Route::prefix('admin')->middleware('admin')->group(function() {
+// Route::prefix('admin')->middleware('admin')->group(function() {
     
     // Route::get('/articles', [ ArticleController::class, 'index'])->name('articles.index');
     // Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
@@ -33,10 +33,15 @@ Route::prefix('admin')->middleware('admin')->group(function() {
     // Route::get('/articles/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
     // Route::put('/articles/{article}/update', [ArticleController::class, 'update'])->name('articles.update');
 
-    Route::resource('articles', ArticleController::class)->except([
-        'show'
-    ]);
-});
+    // Route::resource('articles', ArticleController::class)->except([
+    //     'show'
+    // ]);
+// });
 
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

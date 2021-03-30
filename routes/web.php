@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\Auth\GithubController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,9 @@ use App\Http\Controllers\MainController;
 |
 */
 
+Route::get('/github', function() {
+    dd(env('GITHUB_CLIENT_ID'), env('GITHUB_CLIENT_SECRET'), env('GITHUB_REDIRECT'));
+});
 
 Route::get('/', [ MainController::class, 'home'])->name('home');
 
@@ -45,3 +49,7 @@ Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::get('/auth/github', [ GithubController::class, 'auth'])->name('github.auth');
+Route::get('/auth/github/redirect', [ GithubController::class, 'redirect'])->name('github.redirect');
+

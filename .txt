@@ -202,6 +202,8 @@ ideal s'est mettre une couche le systeme admin
 le systeme admin de données 
 B) Installation de package 
 suivi le docs, 
+php artisan db:seed --class=VoyagerDatabaseSeeder
+php artisan voyager:admin your@email.com --create
 C) BREAD and CRUD
 D) Gestionnaire d'images
 E) Editeur de mackdown 
